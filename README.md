@@ -1,4 +1,4 @@
-# test_textblob
+# test textblob
 Acuracy test on textblob sentiment function using twitter and IMDB dataset:
 
 - Acuracy for rotten tomato dataset: 59.14
