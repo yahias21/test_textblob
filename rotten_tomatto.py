@@ -10,6 +10,5 @@ if __name__ == "__main__":
     pol=dataSet["Sentiment"]
     for i in range(text.shape[0]):
         analytics.append(tb(text.at[i]).polarity)
-        tested=(pol.at[i]-2)/2
-    # print(count*100/len(tested))
-    print(analytics)
+        tested.append((pol.at[i]-2)/2)
+

@@ -17,6 +17,6 @@ def test_twitter():
         else:
             tested.append(0)
     for i in range(len(tested)):
-        if not (tested[i] < 0 or analytics[i] < 0) or (tested[i] < 0 or analytics[i] > 0):
+        if (tested[i] > 0 and analytics[i] > 0) or (tested[i] < 0 and analytics[i] < 0) or (tested[i] == 0 and analytics[i] == 0):
             count += 1
-    return count * 100 / len(tested)
+    print(count * 100 / len(tested))
