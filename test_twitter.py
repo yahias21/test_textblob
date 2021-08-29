@@ -1,13 +1,14 @@
 from textblob import TextBlob as tb
 import pandas as pd
-def test_twitter():
-    Path = "/media/anubis21/PROJECTS/Interns/Incorta/repos/Test textblob/Datasets/Tweets.csv"
+import accuracy_metrics
+def sentiment():
+    Path = "/media/anubis21/PROJECTS/Interns/Incorta/repos/Test textblob/Datasets/twitter airline/Tweets.csv"
     analytics = []
     tested = []
-    count = 0
     dataSet = pd.read_csv(Path)
     text = dataSet["text"]
     pol = dataSet["airline_sentiment"]
+    # map the sentiment from str to numbers
     for i in range(text.shape[0]):
         analytics.append(tb(text.at[i]).polarity)
         if pol.at[i] == "positive":
@@ -16,7 +17,4 @@ def test_twitter():
             tested.append(-1)
         else:
             tested.append(0)
-    for i in range(len(tested)):
-        if (tested[i] > 0 and analytics[i] > 0) or (tested[i] < 0 and analytics[i] < 0) or (tested[i] == 0 and analytics[i] == 0):
-            count += 1
-    print(count * 100 / len(tested))
+    return accuracy_metrics.accuracy(tested, analytics)

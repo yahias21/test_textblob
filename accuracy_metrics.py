@@ -1,15 +1,7 @@
-class accuracy_metrics:
-    def __init__(self,trained,ref,arrClass):
-        self.trained=trained
-        self.ref=ref
-        self.arrClass=arrClass
-    def precision(self):
-        pass
-    def recall(self):
-        pass
-    def pr_curve(self):
-        pass
-    def auc(self):
-        pass
-    def roc(self):
-        pass
+def accuracy(tested,analytics):
+        count=0
+        for i in range(len(tested)):
+            if (tested[i] > 0 and analytics[i] > 0) or (tested[i] < 0 and analytics[i] < 0) or (
+                    tested[i] == 0 and analytics[i] == 0):
+                count += 1
+        return [count * 100 / len(tested),len(tested)]
